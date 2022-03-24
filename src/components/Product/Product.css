@@ -19,6 +19,7 @@
 }
 
 .prodcuct-details p {
+  font-family: "Lato";
   margin-bottom: 0;
   margin-top: 5px;
 }
@@ -40,7 +41,17 @@
   background: #ffe0b3;
   border: none;
   border-radius: 0px 0px 8px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .btn-cart:hover {
   background-color: #ff9900;
+}
+.btn-text {
+  font-family: "Lato";
+  margin-right: 5px;
+  font-size: 15px;
+  color: #0e161a;
+  letter-spacing: 0.0125em;
 }

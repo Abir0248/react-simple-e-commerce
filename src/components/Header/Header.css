@@ -16,3 +16,12 @@
 .nav-bar a:hover {
   color: #ff9900;
 }
+
+@media screen and (max-width: 900px) {
+  .nav-bar a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    margin-left: 10px;
+  }
+}
