@@ -13,32 +13,43 @@ const Shop = () => {
       .then((data) => setProducts(data));
   }, []);
 
-  //   useEffect(() => {
-  //     const storedCart = getStoredCart();
-  //     // console.log(storedCart);
-  //     const savedCart = [];
+  useEffect(() => {
+    const storedCart = getStoredCart();
+    // console.log(storedCart);
+    const savedCart = [];
 
-  //     for (const id in storedCart) {
-  //       //   console.log(id);
-  //       const addedProduct = products.find((product) => product.id === id);
+    for (const id in storedCart) {
+      //   console.log(id);
+      const addedProduct = products.find((product) => product.id === id);
 
-  //       if (addedProduct) {
-  //         const quantity = storedCart[id];
-  //         // console.log(quantity);
-  //         addedProduct.quantity = quantity;
-  //         // console.log(addedProduct);
-  //         savedCart.push(addedProduct);
-  //       }
-  //     }
-  //     setCart(savedCart);
-  //   }, [products]);
+      if (addedProduct) {
+        const quantity = storedCart[id];
+        // console.log(quantity);
+        addedProduct.quantity = quantity;
+        // console.log(addedProduct);
+        savedCart.push(addedProduct);
+      }
+    }
+    setCart(savedCart);
+  }, [products]);
 
-  const handleCartClick = (product) => {
+  const handleCartClick = (selectedProduct) => {
+    let newCart = [];
     // console.log(product);
     // cart.push(product);
-    const newCart = [...cart, product];
+    const exists = cart.find((product) => product.id === selectedProduct.id);
+    if (!exists) {
+      selectedProduct.quantity = 1;
+      newCart = [...cart, selectedProduct];
+    } else {
+      const rest = cart.filter((product) => product.id !== selectedProduct.id);
+      exists.quantity = exists.quantity + 1;
+      newCart = [...rest, exists];
+    }
+
+    // newCart = [...cart, selectedProduct];
     setCart(newCart);
-    addToDb(product.id);
+    addToDb(selectedProduct.id);
   };
   return (
     <div className="shop-container">
