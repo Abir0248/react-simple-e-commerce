@@ -14,7 +14,7 @@
 
 .cart-container {
   background: rgba(255, 153, 0, 0.3);
-  text-align: center;
+  /* text-align: center; */
   margin: 0 15px;
   font-family: "lato";
 }
